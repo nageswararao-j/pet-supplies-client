@@ -1,4 +1,4 @@
-# static
+# pet-supplies-client
 
 pet-supplies-client is a pet supplies angular UI project with version 1.0.
 
