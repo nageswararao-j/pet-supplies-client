@@ -1,0 +1,75 @@
+[
+{
+  "id": 100,
+  "category": {
+    "id": 1,
+    "name": "CATS"
+  },
+  "name": "ABYSSINIAN",
+  "photoUrls": [
+    "/images/cats/abyssinian.jpg"
+  ],
+  "price": "1000",
+  "currency":"INR",
+  "status": "1",
+  "desc":"I’m a high-spirited stunner with looks that rival the sacred cats portrayed in Egyptian murals. But I’m no elegant lap cat – I prefer to live life on the edge, fueled by my insatiable curiosity to climb to the highest heights of the home, investigate everything my humans are up to and explore anything that catches my ever-alert attention."
+},
+{
+  "id": 101,
+  "category": {
+    "id": 1,
+    "name": "CATS"
+  },
+  "name": "USA BOBTAIL",
+  "photoUrls": [
+    "/images/cats/americanbobtail.jpg"
+  ],
+  "price": "2000",
+  "currency":"INR",
+  "status": "1",
+  "desc":"Don’t let my wildcat looks fool you. Despite my rugged bobbed tail and american bobtail cat breedmuscular physique, I’m as friendly and playful as a kitten. I love the attention of my humans and I’m not above asking for it so prepare for lots of playtime. That includes going for walks and teaching me tricks, which makes me sort of like a cleaner, smarter canine."
+},{
+  "id": 102,
+  "category": {
+    "id": 1,
+    "name": "CATS"
+  },
+  "name": "AMERICAN CURL",
+  "photoUrls": [
+    "/images/cats/americancurl.jpg"
+  ],
+  "price": "1500",
+  "currency":"INR",
+  "status": "1",
+  "desc":"It’s a good thing most people find my curly ears irresistably adorable – american curl cat’cause I’ve got an insatiable desire to be adored. I thrive on affection and I’m as much of a giver as a taker, showering my love and energy on all those I hold dear – human, canine or feline. Life’s just too short for discrimination – or intimacy issues."
+},{
+  "id": 104,
+  "category": {
+    "id": 1,
+    "name": "CATS"
+  },
+  "name": "BENGAL",
+  "photoUrls": [
+    "/images/cats/bengal.jpg"
+  ],
+  "price": "5500",
+  "currency":"INR",
+  "status": "1",
+  "desc":"Large and exotic, I look a lot like my wild ancestors. And like them, I can bengal catbe a lot to handle with my super high energy levels, exceptional athleticism, and an abundance of smarts."
+},{
+  "id": 105,
+  "category": {
+    "id": 1,
+    "name": "CATS"
+  },
+  "name": "HIMALAYAN",
+  "photoUrls": [
+    "/images/cats/himalayan.jpg"
+  ],
+  "price": "2500",
+  "currency":"INR",
+  "status": "1",
+  "desc":"I’m what’s known as the best of both worlds – a purrfect combination of two very popular cat breeds, the Persian and the Siamese. And that’s both for my looks and my personality, which strikes the ideal balance between the Persian’s gentle nature and the Siamese’s affectionate playfulness"
+}
+
+]
