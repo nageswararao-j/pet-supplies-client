@@ -27,9 +27,13 @@
     "open": "0.0.5",
     "rimraf": "^2.4.0",
     "run-sequence": "^1.1.1",
-    "wiredep": "^2.2.2"
+    "wiredep": "^2.2.2",
+	"event-stream": "3.3.4"
   },
   "engines": {
     "node": ">=0.10.0"
+  },
+  "dependencies": {
+    "bluebird": "^3.4.6"
   }
 }
