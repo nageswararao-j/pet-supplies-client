@@ -1,0 +1,19 @@
+.navbar {
+	margin-bottom: 50px;
+	border-radius: 0;
+}
+
+
+.jumbotron {
+	margin-bottom: 0;
+}
+
+
+footer {
+	background-color: #555;
+	color: white;
+	padding: 6px;
+}
+.content-h{
+	height:510px;
+}
