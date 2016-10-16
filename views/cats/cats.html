@@ -1,0 +1,19 @@
+<div class="col-sm-9 text-left" ng-controller="CatsController">
+	<div class="container">
+		<div ng-repeat="cat in catsList">
+			<div class="col-sm-2">
+				<div class="panel panel-primary">
+					<div class="panel-heading">{{cat.name}}</div>
+					<div class="panel-body">
+						<img title={{cat.desc}} ng-src={{cat.photoUrls[0]}}
+							class="img-responsive" style="width: 100%" alt="Image">
+					</div>
+					<div class="panel-footer">
+						{{cat.price}} {{cat.currency}} </br> <input class="button"
+							type="button" value="Add to cart">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
