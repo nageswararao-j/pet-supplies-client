@@ -35,7 +35,7 @@ var paths = {
     main: './index.html',
     files: ['./views/**/*.html']
   },
-  appScripts: [ './app.js','./services/*.js','./controllers/*.js'],
+  appScripts: [ './app.js','./services/*.js','./controllers/*.js','./directives/*.js'],
   vendor: ['./vendor/*.js']
 };
 
@@ -171,7 +171,7 @@ gulp.task('index', function () {
 
 gulp.task('index:dev', function() {
 	var target = gulp.src('./index.html');
-	var sources = gulp.src(['./app.js','./controllers/*.js','./services/*.js' ]);
+	var sources = gulp.src(['./app.js','./controllers/*.js','./services/*.js','./directives/*.js']);
 	return target.pipe(inject(sources)).pipe(gulp.dest('./'));
 });
 
