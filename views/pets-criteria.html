@@ -1,0 +1,30 @@
+<ul class="sub-menu collapse" id={{products}}>
+	Size:
+	<ul>
+		<li><label class="checkbox-inline"><input type="checkbox"
+				value="">Small</label> <label class="checkbox-inline"><input
+				type="checkbox" value="">Medium</label> <label
+			class="checkbox-inline"><input type="checkbox" value="">Large</label></li>
+	</ul>
+	Cost: EUR
+	<output id="costrange">100</output>
+	<div class="range">
+		<input type="range" name="costrange" min="1" max="9999" value="100"
+			onchange="costrange.value=value">
+
+	</div>
+	Weight:
+	<output id="weightrange">2</output>
+	<div class="range">
+		<input type="range" name="weightrange" min="1" max="25" value="2"
+			onchange="weightrange.value=value">
+
+	</div>
+	Life Expectancy:
+	<output id="liferange">5</output>
+	<div class="range">
+		<input type="range" name="liferange" min="1" max="25" value="5"
+			onchange="liferange.value=value">
+
+	</div>
+</ul>

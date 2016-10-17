@@ -1,9 +1,10 @@
 'use strict';
 
-app.controller('MainCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+app.controller('MainCtrl', ['$scope',function ($scope) {
+    $scope.load = function(type){
+    	$scope.pettype = type;
+    	$scope.products = type;
+    	
+    };
+    
+  }]);
