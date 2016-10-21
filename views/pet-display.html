@@ -1,0 +1,14 @@
+<div class="col-sm-2">
+	<div class="panel panel-primary">
+		<div class="panel-heading">{{pet.name}}</div>
+		<div class="panel-body">
+			<img title={{pet.desc}} ng-src={{pet.photoUrls[0]}}
+				class="img-responsive" style="width: 100%" alt="Image">
+		</div>
+		<div class="panel-footer">
+			Price: {{pet.price}} {{pet.currency}} </br> 
+			Qty: <input type="number" name="itemQty" ng-model="pet.quantity"  min="1" max="1000" ng-required="true" /> 
+		</div>
+		<div align="center"><input class="btn btn-success" type="button" value="Add to cart" ng-click="addToCart(pet);" /></div></br>
+	</div>
+</div>

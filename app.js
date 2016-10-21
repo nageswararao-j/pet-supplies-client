@@ -13,7 +13,7 @@ var app = angular.module('petApp', [
 //'ngAria',
 //'ngCookies',
 //'ngMessages',
-'ngResource', 'ngRoute',
+'ngResource', 'ngRoute','ui.bootstrap',
 //'ngSanitize',
 //'ngTouch'
 ]);

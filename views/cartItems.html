@@ -1,0 +1,18 @@
+
+<ul class="nav navbar-nav">
+	<li class="dropdown"><a href class="dropdown-toggle"
+		data-toggle="dropdown" ng-click="showCartItems();">Cart({{cartItems.length}})<span
+			class="glyphicon glyphicon-user pull-right"></span></a>
+		<ul class="dropdown-menu" ng-if='isItemsPresent'>
+			<li><b>(Quantity) & Product Name <span class="glyphicon pull-right b"><b>Actions</b></span></b></li>
+			<div ng-repeat="item in cartItems">
+				<li><span class="glyphicon pull-left">({{item.quantity}})</span>
+					<a href>{{item.name}}</a> <a href class="glyphicon pull-right"
+					ng-click="removeCartItem(item);"> Remove </a><a href
+					class="glyphicon pull-right"> Edit </a></li>
+				<li class="divider"></li>
+			</div>
+			<li><a href>Proceed to checkout<span
+					class="glyphicon pull-right"></span></a></li>
+		</ul></li>
+</ul>

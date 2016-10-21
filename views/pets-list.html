@@ -1,0 +1,14 @@
+<div id="products" class="sub-menu collapse">
+	<div ng-repeat="pet in petsList">
+		<ul>
+			<a href ng-click="load(pet);">{{pet}}</a>
+			<ul ng-hide="true">
+				<li><a href ng-click="load('BIRDS_FOOD');">Food</a></li>
+				<li><a href ng-click="load('BIRDS_TOYS')">Toys</a></li>
+				<li><a href ng-click="load('BIRDS_CAGES')">Cages &
+						Accessories</a></li>
+				<li><a href ng-click="load('BIRDS_MISC')">Miscellaneous</a></li>
+			</ul>
+		</ul>
+	</div>
+</div>

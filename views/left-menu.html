@@ -1,25 +1,25 @@
 <div class="nav-side-menu">
 	<div class="menu-list">
 		<ul id="menu-content" class="menu-content collapse out active">
-			<li ng-click="load('CATS');" data-toggle="collapse"
-				data-target="#{{products}}" class="collapsed active"><a><i
-					class="fa fa-gift fa-lg"></i> Cats <span class="arrow"></span></a></li>
-			<div ng-include="'views/pets-criteria.html'" />
+			<li ng-click="load('ALL');" data-toggle="collapse"
+				data-target="#products" class="collapsed active"><a><i
+					class="fa fa-gift fa-lg"></i> Pet Supplies<span class="arrow"></span></a></li>
+			<div ng-include="'views/pets-list.html'" /> 
 			<li data-toggle="collapse" data-target="#services"
 				class="collapsed active"><a href><i
-					class="fa fa-globe fa-lg"></i> Dogs <span class="arrow"></span></a></li>
+					class="fa fa-globe fa-lg"></i> My Account <span class="arrow"></span></a></li>
 			<ul class="sub-menu collapse" id="services">
-				<li><a href>ABYSSINIAN</a></li>
-				<li><a href>AMERICAN BOBTAIL</a></li>
-				<li><a href>AMERICAN CURL</a></li>
-				<li><a href>BENGAL</a></li>
-				<li><a href>HIMALAYAN</a></li>
+				<li><a href>Account details</a></li>
+				<li><a href>Change password</a></li>
+				<li><a href>Update account details</a></li>
+				<li><a href>My Orders</a></li>
+				<li><a href>MY-Wallet</a></li>
 			</ul>
 
 
 			<li data-toggle="collapse" data-target="#new"
 				class="collapsed active"><a href><i class="fa fa-car fa-lg"></i>
-					New <span class="arrow"></span></a></li>
+					Recent search <span class="arrow"></span></a></li>
 		</ul>
 	</div>
 </div>

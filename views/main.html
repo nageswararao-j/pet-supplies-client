@@ -6,14 +6,13 @@
 				<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href ng-click="load('CATS')">Logo</a>
+			<a class="navbar-brand" href ng-click="load('Cats')">Logo</a>
 		</div>
 		<div class="collapse navbar-collapse" id="myNavbar">
 			<ul class="nav navbar-nav">
-				<li class="active"><a href ng-click="load('CATS')">Home</a></li>
+				<li class="active"><a href ng-click="load('Cats')">Home</a></li>
 				<li><a href>About</a></li>
-				<li><a href>Projects</a></li>
-				<li><a href>Contact</a></li>
+				<li><a href>Products</a></li>
 				<li><form class="form-inline">
 						<input type="search" class="form-control" size="50"
 							placeholder="Search for products..">
@@ -22,11 +21,14 @@
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href><span class="glyphicon glyphicon-shopping-cart"></span>
-						Cart</a></li>
-				<li><a href><span class="glyphicon glyphicon-log-in"></span>
-						Guest user !</a></li>
-				<li><a href><span class="glyphicon glyphicon-user"></span>
-						Settings</a></li>
+						Order History</a></li>
+				<li><a href><span class="glyphicon glyphicon-shopping-cart"></span>
+						Order Status</a></li>
+				<li><ng-include src="'views/userDropbox.html'"></li>
+				<!-- 				<li><a href><span class="glyphicon glyphicon-shopping-cart"></span> -->
+				<!-- 						Cart</a></li> -->
+				<li><ng-include src="'views/cartItems.html'"></li>
+
 			</ul>
 		</div>
 	</div>
@@ -38,9 +40,11 @@
 			<div ng-include="'/views/left-menu.html'"></div>
 		</div>
 		<div class="col-sm-8 text-left">
-			<dynatemplate catagory="pettype">
+			<!-- 			<dynamic-template catagory="pettype"> -->
+			<ng-include src="'/views/products.html'">
 		</div>
 	</div>
+</div>
 </div>
 </div>
 
