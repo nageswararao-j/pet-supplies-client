@@ -1,7 +1,7 @@
 <div id="products" class="sub-menu collapse">
 	<div ng-repeat="pet in petsList">
 		<ul>
-			<a href ng-click="load(pet);">{{pet}}</a>
+			<a href ng-click="load(pet.code);">{{pet.name}}</a>
 			<ul ng-hide="true">
 				<li><a href ng-click="load('BIRDS_FOOD');">Food</a></li>
 				<li><a href ng-click="load('BIRDS_TOYS')">Toys</a></li>

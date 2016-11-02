@@ -1,0 +1,9 @@
+<div class="col-sm-9 text-left">
+	<div class="container">
+		<div ng-repeat="catagory in catagories">
+			<div ng-repeat="pet in catagory.products">
+				<pet-display list="pet" />
+			</div>
+		</div>
+	</div>
+</div>

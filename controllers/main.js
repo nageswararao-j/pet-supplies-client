@@ -1,64 +1,114 @@
 'use strict';
 
-app.controller('MainCtrl', [ '$scope','ReferentialDataService','DataLoadService', function($scope,ReferentialDataService,DataLoadService) {
-	$scope.cartItems = []; 
-	$scope.isItemsPresent = false;
-	
-	$scope.load = function(type) {
-		$scope.pettype = type;
-		$scope.products = type;
-		if ($scope.pettype == 'Dogs') {
-			DataLoadService.getAllDogs().then(function(data) {
-				$scope.petsDetail = data;
-			}, function(errResponse) {
-				console.error('Error while fetching dogs');
+app.controller('MainCtrl', [
+		'$scope',
+		'ReferentialDataService',
+		'ProductsService',
+		'CartService',
+		'USER_ROLES',
+		'AuthService',
+		'$location',
+		'Session',
+		function($scope, ReferentialDataService, ProductsService, CartService,
+				USER_ROLES, AuthService, $location, Session) {
+			$scope.cartItems = {};
+			CartService.loadCartItems(Session.currentUser.userId).then(function(loadedItems) {
+				var cartItems = loadedItems.data;
+				if(cartItems != undefined && cartItems.length > 0){
+					angular.forEach(cartItems,function(cartItem){
+						$scope.cartItems[cartItem.id] = cartItem;
+					});
+				}
+				updateCartCount();
 			});
-		} else {
-			DataLoadService.getAllCats().then(function(data) {
-				$scope.petsDetail = data;
-			}, function(errResponse) {
-				console.error('Error while fetching cats');
-			});
-		}
-	};
-	$scope.petsList = ReferentialDataService.getAllPets();
-	
-	$scope.addToCart = function(item) {
-		$scope.isItemsPresent = true;
-		if($scope.cartItems.length == 0){
-			$scope.cartItems.push(item);	
-		}else if(!isItemFoundInCart(item.id)){	
-			$scope.cartItems.push(item);	
-		}
-	}
-	
-	function isItemFoundInCart(itemId){
-		var isPresent = false;
-		$scope.cartItems.find(function(element){
-		    if(element.id == itemId) 
-		    	isPresent = true;
-		})
-		return isPresent;
-	}
-	
-	$scope.showCartItems = function(){
-		if($scope.cartItems.length != 0){
-			$scope.isItemsPresent = true;	
-		}
-		
-	}
-	
-	$scope.removeCartItem = function(item){
-		if(isItemFoundInCart(item.id)){
-			$scope.cartItems.splice($scope.cartItems.indexOf(item), 1);
-		}
-		if($scope.cartItems.length == 0){
 			$scope.isItemsPresent = false;
-		}
-	}
-	
-//	$scope.updateItemQty = function(item){
-//		console.log(item.name + ' == '+item.quantity);
-//	}
-	
-} ]);
+			$scope.currentUser = null;
+			$scope.petsList = ReferentialDataService.getAllPets();
+			$scope.userName = Session.currentUser.userName;
+			$scope.load = function(type) {
+				$scope.pettype = type;
+				$scope.products = type;
+				ProductsService.loadAllPets(type).then(function(data) {
+					$scope.catagories = data;
+				});
+			};
+
+			$scope.addToCart = function(item) {
+				$scope.isItemsPresent = true;
+				var cartItem = prepareCartItem(item);
+				//Add item to cart
+				if (!isItemFoundInCart(cartItem)) {
+					CartService.saveCartItem(cartItem).then(function(savedItem) {
+						$scope.cartItems[savedItem.data.id]  = savedItem.data;
+						updateCartCount();
+					});
+				}else{	
+					//update item quantity
+					angular.forEach($scope.cartItems,function(value, key){
+						if(compareQuantity(value,cartItem)){
+							value.quantity = cartItem.quantity;
+							CartService.updateCartItem(cartItem);
+						}
+					});
+				}
+			};
+
+			var isItemFoundInCart = function(item) {
+				var isPresent = false;
+				angular.forEach($scope.cartItems,function(value, key){
+					if(compareUserIdAndProductId(value,item)){
+						isPresent = true;
+					}
+				});
+				return isPresent;
+			};
+			
+			$scope.showCartItems = function() {
+				if ($scope.cartItems.length != 0) {
+					$scope.isItemsPresent = true;
+				};
+			};
+
+			$scope.removeCartItem = function(item) {
+				if (isItemFoundInCart(item)) {
+					delete $scope.cartItems[item.id];
+					deleteCartItem(item);
+				}
+				if ($scope.cartItems.length == 0) {
+					$scope.isItemsPresent = false;
+				}
+			};
+
+			var deleteCartItem = function(cartItem) {
+				CartService.deleteCartItem(cartItem);
+				updateCartCount();
+			};
+
+			$scope.setCurrentUser = function(user) {
+				$scope.currentUser = user;
+			};
+
+			var prepareCartItem = function(item) {
+				var cartItem = {
+					id : item.id,
+					productId : item.productId,
+					quantity : item.quantity,
+					productName : item.productName,
+					userId : Session.currentUser.userId
+				};
+				return cartItem;
+			};
+			
+			var updateCartCount = function(){
+				$scope.cartItemSize = Object.keys($scope.cartItems).length;
+			};
+			
+			var compareQuantity = function(savedCartItem,cartItemToBeSaved){
+				return compareUserIdAndProductId(savedCartItem,cartItemToBeSaved) && savedCartItem.quantity !== cartItemToBeSaved.quantity;
+			};
+			
+			var compareUserIdAndProductId = function(savedCartItem,cartItemToBeSaved){
+				return savedCartItem.productId === cartItemToBeSaved.productId && savedCartItem.userId === cartItemToBeSaved.userId;
+			};
+			
+		} ]);

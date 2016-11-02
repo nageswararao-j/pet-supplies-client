@@ -15,7 +15,7 @@
 				<li><a href>Products</a></li>
 				<li><form class="form-inline">
 						<input type="search" class="form-control" size="50"
-							placeholder="Search for products..">
+							placeholder="Search for products.." ng-model="searchData">
 						<button type="button" class="btn btn-danger">Search</button>
 					</form></li>
 			</ul>
@@ -41,11 +41,9 @@
 		</div>
 		<div class="col-sm-8 text-left">
 			<!-- 			<dynamic-template catagory="pettype"> -->
-			<ng-include src="'/views/products.html'">
+			<ng-include src="'/views/catagories.html'">
 		</div>
 	</div>
-</div>
-</div>
 </div>
 
 
