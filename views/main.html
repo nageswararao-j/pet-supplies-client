@@ -1,47 +1,11 @@
-<nav class="navbar navbar-inverse">
-	<div class="container-fluid">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle" data-toggle="collapse"
-				data-target="#myNavbar">
-				<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-					class="icon-bar"></span>
-			</button>
-			<a class="navbar-brand" href ng-click="load('Cats')">Logo</a>
-		</div>
-		<div class="collapse navbar-collapse" id="myNavbar">
-			<ul class="nav navbar-nav">
-				<li class="active"><a href ng-click="load('Cats')">Home</a></li>
-				<li><a href>About</a></li>
-				<li><a href>Products</a></li>
-				<li><form class="form-inline">
-						<input type="search" class="form-control" size="50"
-							placeholder="Search for products.." ng-model="searchData">
-						<button type="button" class="btn btn-danger">Search</button>
-					</form></li>
-			</ul>
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href><span class="glyphicon glyphicon-shopping-cart"></span>
-						Order History</a></li>
-				<li><a href><span class="glyphicon glyphicon-shopping-cart"></span>
-						Order Status</a></li>
-				<li><ng-include src="'views/userDropbox.html'"></li>
-				<!-- 				<li><a href><span class="glyphicon glyphicon-shopping-cart"></span> -->
-				<!-- 						Cart</a></li> -->
-				<li><ng-include src="'views/cartItems.html'"></li>
-
-			</ul>
-		</div>
-	</div>
-</nav>
-
+<ng-include src="'/views/header.html'" />
 <div class="container-fluid text-left">
 	<div class="row content">
 		<div class="col-sm-2 sidenav">
 			<div ng-include="'/views/left-menu.html'"></div>
 		</div>
 		<div class="col-sm-8 text-left">
-			<!-- 			<dynamic-template catagory="pettype"> -->
-			<ng-include src="'/views/catagories.html'">
+			<ng-include src="'/views/catagories.html'" />
 		</div>
 	</div>
 </div>

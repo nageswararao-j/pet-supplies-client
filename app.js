@@ -26,10 +26,14 @@ app.config([ '$routeProvider', '$stateProvider', 'USER_ROLES',
 				templateUrl : 'views/main.html',
 				controller : 'MainCtrl',
 				controllerAs : 'main'
-			}).when('/header', {
-				templateUrl : 'views/header.html',
-				controller : 'controllers/TemplateController',
-				controllerAs : 'header'
+			}).when('/order', {
+				templateUrl : 'views/order.html',
+				controller : 'OrderController',
+				controllerAs : 'order'
+			}).when('/orderHistory', {
+				templateUrl : 'views/orderHistory.html',
+				controller : 'OrderHistoryController',
+				controllerAs : 'orderHistory'
 			}).otherwise({
 				redirectTo : '/login'
 			});

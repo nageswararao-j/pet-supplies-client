@@ -2,7 +2,8 @@
 
 app.service('Session', function() {
 	this.currentUser = {};
-
+	this.cartItems = {};
+	this.isItemsPresent = {};
 	this.create = function(sessionId, userId, userRole) {
 		this.id = sessionId;
 		this.userId = userId;

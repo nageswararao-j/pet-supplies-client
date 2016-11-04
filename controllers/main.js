@@ -94,6 +94,8 @@ app.controller('MainCtrl', [
 					productId : item.productId,
 					quantity : item.quantity,
 					productName : item.productName,
+					price : item.price,
+					currency : item.currency,
 					userId : Session.currentUser.userId
 				};
 				return cartItem;
@@ -111,4 +113,13 @@ app.controller('MainCtrl', [
 				return savedCartItem.productId === cartItemToBeSaved.productId && savedCartItem.userId === cartItemToBeSaved.userId;
 			};
 			
+			$scope.navToOrderHistory = function(){
+				$location.path("/orderHistory");
+			};
+			
+			Session.cartItems = $scope.cartItems;
+			
+			$scope.signOut = function(){
+				$location.path("/login");
+			};
 		} ]);
