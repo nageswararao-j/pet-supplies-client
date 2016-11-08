@@ -22,6 +22,10 @@ app.config([ '$routeProvider', '$stateProvider', 'USER_ROLES',
 				templateUrl : 'views/login.html',
 				controller : 'LoginController',
 				controllerAs : 'login'
+			}).when('/signUp', {
+				templateUrl : 'views/signUp.html',
+				controller : 'SignUpController',
+				controllerAs : 'signUp'
 			}).when('/main', {
 				templateUrl : 'views/main.html',
 				controller : 'MainCtrl',

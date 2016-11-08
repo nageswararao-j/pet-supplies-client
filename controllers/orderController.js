@@ -1,7 +1,7 @@
 'use strict';
 
-app.controller('OrderController', [ '$scope','$location','Session','OrderService',
-		function($scope,$location,Session,OrderService) {
+app.controller('OrderController', [ '$scope','$location','Session','OrderService','CartService','ORDERS',
+		function($scope,$location,Session,OrderService,CartService,ORDERS) {
 			var empty = ' ';
 			$scope.currentUser = Session.currentUser;
 			$scope.cartItems = Session.cartItems;
@@ -33,7 +33,11 @@ app.controller('OrderController', [ '$scope','$location','Session','OrderService
 					};
 				});
 				if(orders.length > 0){
-					OrderService.placeOrder(orders);
+					OrderService.placeOrder(orders).then(function(loadedOrders) {
+						$scope.orders = loadedOrders.data;
+					});
+					console.log('Ordered placed successfully !');
+					deleteCartItemsNavToOrderHistory();
 				}
 			};
 			
@@ -45,7 +49,7 @@ app.controller('OrderController', [ '$scope','$location','Session','OrderService
 				    order.productPrice = item.price;
 				    order.currency = item.currency;
 				    order.quantity = item.quantity;
-				    order.status = $scope.userName;
+				    order.status = ORDERS.received;
 				    order.shippingAddress = prepareShippingAddress();
 				    order.orderDate = new Date();
 				    return order;
@@ -54,12 +58,21 @@ app.controller('OrderController', [ '$scope','$location','Session','OrderService
 			var prepareShippingAddress = function() {
 				var delim = ' , ';
 				return $scope.userName+delim+
-//				$scope.address+delim+
-//				$scope.city+delim+
-//				$scope.state+delim+
-//				$scope.zipCode+delim+
-//				$scope.email+delim+
-//				$scope.phone+delim+
+				$scope.address+delim+
+				$scope.city+delim+
+				$scope.state+delim+
+				$scope.zipCode+delim+
+				$scope.email+delim+
+				$scope.phone+delim+
 				$scope.country;
+			};
+			
+			var deleteCartItemsNavToOrderHistory = function(){
+				angular.forEach($scope.cartItems,function(value, key){
+					if(value != undefined){
+						CartService.deleteCartItem(value);
+					};
+				});
+				$location.path('/orderHistory');
 			};
 		} ]);

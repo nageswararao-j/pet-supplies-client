@@ -1,0 +1,84 @@
+<br />
+<div class="container">
+	<div class="col-md-3"></div>
+	<div class="col-md-6">
+		<div class="panel-body">
+			<h4 style="color: #7EB59E; margin: initial; margin-bottom: 10px;">Sign
+				Up Now</h4>
+			<hr>
+			<div class="panel-body">
+				<form accept-charset="UTF-8" role="form">
+					<fieldset>
+						<div class="form-group">
+							<input class="form-control" placeholder="User Name"
+								ng-model="userName" name="userName" type="text"
+								ng-required="true">
+						</div>
+						<div class="form-group">
+							<input class="form-control" placeholder="Password"
+								ng-model="password" name="password" type="password" value=""
+								ng-required="true">
+						</div>
+						<div class="form-group">
+							<input class="form-control" type="email" placeholder="Email Id"
+								validate-email name="email" id="email" ng-model="email"
+								ng-required="true">
+						</div>
+						<div class="form-group">
+							<input class="form-control" placeholder="Address"
+								ng-model="doorNum" name="address" type="text" value="Address"
+								ng-required="true">
+						</div>
+						<div class="form-group">
+							<div class="col-md-12">
+								<strong>City:</strong>
+							</div>
+							<div class="col-md-12">
+								<input type="text" ng-model="city" name="city"
+									class="form-control" value="" />
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-md-12">
+								<strong>State:</strong>
+							</div>
+							<div class="col-md-12">
+								<input type="text" ng-model="state" name="state"
+									class="form-control" value="" />
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-md-12">
+								<strong>Zip / Postal Code:</strong>
+							</div>
+							<div class="col-md-12">
+								<input type="text" ng-model="zipCode" name="zip_code"
+									class="form-control" value="" />
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-md-12">
+								<strong>Country:</strong>
+							</div>
+							<div class="col-md-12">
+								<input type="text" ng-model="country" class="form-control"
+									name="country" value="" />
+							</div>
+						</div>
+						<div class="form-group">
+							<input class="form-control" placeholder="Contact Number"
+								ng-model="phone" name="phone" type="number" value="phone"
+								ng-required="true" />
+						</div>
+						<input class="btn btn-lg btn-success btn-block" type="submit"
+							value="Sign Up" ng-click="signUpToApp();"> <input
+							class="btn btn-lg btn-success btn-block" type="submit"
+							value="Login" ng-click="login();">
+					</fieldset>
+				</form>
+			</div>
+
+		</div>
+		<div class="col-md-2"></div>
+	</div>
+</div>

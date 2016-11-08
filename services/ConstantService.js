@@ -12,12 +12,21 @@ app.constant('USER_ROLES', {
 	all : '*',
 	admin : 'admin',
 	editor : 'editor',
-	guest : 'guest'
+	guest : 'guest',
+	newUser : 'newUser'
 })
 app.constant('ENVIRONMENT', {
 	mode : 'dev',
-	baseUrl : 'http://localhost:8080/pet-supplies'
+	baseUrl : 'http://localhost:8080'
 })
 app.constant('ERROR', {
 
 })
+app.constant('ORDERS', {
+	received : 'Order received',
+	readyToShip : 'Ready to ship',
+	shipped : 'Shipped',
+	delivered  : 'Delivered',
+	cancelled : 'Cancelled'
+})
+

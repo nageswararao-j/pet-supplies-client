@@ -1,11 +1,11 @@
 'use strict';
 
-app.controller('LoginController', ['$scope','LoginService',
+app.controller('LoginController', ['$scope',
 		'$location',
 		'$rootScope',
 		'AuthService',
 		'AUTH_EVENTS','USER_ROLES',
-		function($scope, LoginService, $location, $rootScope, AuthService,
+		function($scope, $location, $rootScope, AuthService,
 				AUTH_EVENTS,USER_ROLES) {
 			var credentials = {
 				emailId : '',
@@ -33,8 +33,13 @@ app.controller('LoginController', ['$scope','LoginService',
 					$rootScope.$broadcast(AUTH_EVENTS.loginFailed);
 				});
 			};
-
+			
 			$scope.setCurrentUser = function(user) {
 				$scope.currentUser = user;
 			};
+			
+			$scope.signUp = function(){
+				$location.path('/signUp');
+			};
+
 		} ]);
