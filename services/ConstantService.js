@@ -6,7 +6,8 @@ app.constant('AUTH_EVENTS', {
 	logoutSuccess : 'auth-logout-success',
 	sessionTimeout : 'auth-session-timeout',
 	notAuthenticated : 'auth-not-authenticated',
-	notAuthorized : 'auth-not-authorized'
+	notAuthorized : 'auth-not-authorized',
+	existingUser : 'user-exists'
 });
 app.constant('USER_ROLES', {
 	all : '*',
@@ -20,7 +21,7 @@ app.constant('ENVIRONMENT', {
 	baseUrl : 'http://localhost:8080'
 })
 app.constant('ERROR', {
-
+	EMAIL_EXISTS : 'EmailId already exists! Please Login'
 })
 app.constant('ORDERS', {
 	received : 'Order received',

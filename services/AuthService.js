@@ -1,12 +1,20 @@
 'use strict';
 
-app.factory('AuthService',['$http','$rootScope','Session', function($http,$rootScope, Session) {
+app.factory('AuthService',['$http','$rootScope','Session','USER_ROLES','AUTH_EVENTS','ERROR',function($http,$rootScope, Session,USER_ROLES,AUTH_EVENTS,ERROR) {
 	var authService = {};
 
 	authService.login = function(credentials) {
-		return $http.post($rootScope.baseUrl+'/login', credentials).then(function(res) {
-			Session.create(res.data.emailId, res.data.userId, 'admin');
+		return $http.post($rootScope.baseUrl+'/login', credentials).success(function(res) {
+			Session.create(res.data.emailId, res.data.userId, USER_ROLES.newUser);
 			return res.data;
+		}).error(function(error) {
+			if(error.present){
+				console.log(ERROR.EMAIL_EXISTS);
+				// firing an event downwards
+				$rootScope.$broadcast(AUTH_EVENTS.existingUser, {
+				  errorMsg:  ERROR.EMAIL_EXISTS
+				});
+			}
 		});
 	};
 

@@ -2,16 +2,16 @@
 
 app.controller('MainCtrl', [
 		'$scope',
-		'ReferentialDataService',
 		'ProductsService',
 		'CartService',
 		'USER_ROLES',
 		'AuthService',
 		'$location',
 		'Session',
-		function($scope, ReferentialDataService, ProductsService, CartService,
+		function($scope, ProductsService, CartService,
 				USER_ROLES, AuthService, $location, Session) {
 			$scope.cartItems = {};
+			$scope.petsList = {};
 			CartService.loadCartItems(Session.currentUser.userId).then(function(loadedItems) {
 				var cartItems = loadedItems.data;
 				if(cartItems != undefined && cartItems.length > 0){
@@ -23,7 +23,10 @@ app.controller('MainCtrl', [
 			});
 			$scope.isItemsPresent = false;
 			$scope.currentUser = null;
-			$scope.petsList = ReferentialDataService.getAllPets();
+//			$scope.petsList = ProductsService.loadAllPets('ALL');
+			ProductsService.loadAllPets('ALL').then(function(data) {
+				$scope.petsList = data;
+			});
 			$scope.userName = Session.currentUser.userName;
 			$scope.load = function(type) {
 				$scope.pettype = type;
@@ -120,6 +123,7 @@ app.controller('MainCtrl', [
 			Session.cartItems = $scope.cartItems;
 			
 			$scope.signOut = function(){
+				Session.currentUser = null;
 				$location.path("/login");
 			};
 		} ]);

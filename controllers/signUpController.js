@@ -1,7 +1,7 @@
 'use strict';
 
-app.controller('SignUpController', [ '$scope','$location','Session','AuthService','USER_ROLES',
-		function($scope,$location,Session,AuthService,USER_ROLES) {
+app.controller('SignUpController', [ '$scope','$location','Session','AuthService','USER_ROLES','AUTH_EVENTS',
+		function($scope,$location,Session,AuthService,USER_ROLES,AUTH_EVENTS) {
 		
 	
 	$scope.signUpToApp = function(){
@@ -10,7 +10,6 @@ app.controller('SignUpController', [ '$scope','$location','Session','AuthService
 			if(user != undefined && user.active){
 				$scope.currentUser = user;
 				AuthService.currentUser(user);
-				Session
 				$location.path("/main");	
 			}
 		});
@@ -44,4 +43,10 @@ app.controller('SignUpController', [ '$scope','$location','Session','AuthService
 	$scope.login = function(){
 		$location.path('/login');
 	};
+	
+
+	$scope.$on(AUTH_EVENTS.existingUser, function(event, data) {
+		console.log(data.errorMsg); // 'Data to send'
+		$scope.emailPresent = data.errorMsg;
+	});
 } ]);
