@@ -16,26 +16,30 @@ var app = angular.module('petApp', [
 // 'ngSanitize',
 // 'ngTouch'
 ]);
-app.config([ '$routeProvider', '$stateProvider', 'USER_ROLES',
-		function($routeProvider, $stateProvider, USER_ROLES) {
+app.config([ '$routeProvider', '$stateProvider', 'USER_ROLES','ENVIRONMENT',
+		function($routeProvider, $stateProvider, USER_ROLES,ENVIRONMENT) {
+			var baseUrl = ''; 
+			if(ENVIRONMENT.mode === 'prod'){
+				baseUrl	= ENVIRONMENT.baseUrl;
+			}
 			$routeProvider.when('/login', {
-				templateUrl : 'views/login.html',
+				templateUrl : baseUrl+'/views/login.html',
 				controller : 'LoginController',
 				controllerAs : 'login'
 			}).when('/signUp', {
-				templateUrl : 'views/signUp.html',
+				templateUrl :  baseUrl+'/views/signUp.html',
 				controller : 'SignUpController',
 				controllerAs : 'signUp'
 			}).when('/main', {
-				templateUrl : 'views/main.html',
+				templateUrl :  baseUrl+'/views/main.html',
 				controller : 'MainCtrl',
 				controllerAs : 'main'
 			}).when('/order', {
-				templateUrl : 'views/order.html',
+				templateUrl :  baseUrl+'/views/order.html',
 				controller : 'OrderController',
 				controllerAs : 'order'
 			}).when('/orderHistory', {
-				templateUrl : 'views/orderHistory.html',
+				templateUrl :  baseUrl+'/views/orderHistory.html',
 				controller : 'OrderHistoryController',
 				controllerAs : 'orderHistory'
 			}).otherwise({
@@ -43,9 +47,9 @@ app.config([ '$routeProvider', '$stateProvider', 'USER_ROLES',
 			});
 			$stateProvider.state('index', {
 				url : '/views',
-				templateUrl : 'views/index.html',
+				templateUrl : baseUrl+'/index.html',
 				data : {
-					authorizedRoles : [ USER_ROLES.admin, USER_ROLES.editor ]
+					authorizedRoles : [ USER_ROLES.admin, USER_ROLES.editor,USER_ROLES.newUser ]
 				}
 			});
 		} ]);

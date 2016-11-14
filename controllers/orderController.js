@@ -3,9 +3,9 @@
 app.controller('OrderController', [ '$scope','$location','Session','OrderService','CartService','ORDERS',
 		function($scope,$location,Session,OrderService,CartService,ORDERS) {
 			var empty = ' ';
-			$scope.currentUser = Session.currentUser;
+			$scope.currentUser = Session.currentUser.data;
 			$scope.cartItems = Session.cartItems;
-			$scope.userName = Session.currentUser.userName;
+			$scope.userName = Session.currentUser.data.userName;
 			$scope.cartItemSize = Object.keys($scope.cartItems).length;
 			
 			if ($scope.cartItemSize > 0) {
@@ -15,7 +15,7 @@ app.controller('OrderController', [ '$scope','$location','Session','OrderService
 			$scope.load = function(type){
 				$location.path("/main");
 			};
-			var address = Session.currentUser.address;
+			var address = Session.currentUser.data.address;
 			$scope.address = address.address;
 			$scope.userName = $scope.currentUser.userName;
 			$scope.city = address.city;

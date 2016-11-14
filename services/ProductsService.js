@@ -12,7 +12,6 @@ app.factory('ProductsService', [ '$http', '$q','$rootScope', function($http, $q,
 				headers : {
 					'Content-Type' : 'application/json'
 				}
-
 			}).success(function(response) {
 				deferred.resolve(response);
 			}).error(function(error) {
@@ -21,5 +20,4 @@ app.factory('ProductsService', [ '$http', '$q','$rootScope', function($http, $q,
 			return deferred.promise;
 		}
 	}
-	// http://localhost:8080/data/category replace with rootscope - url
 } ]);

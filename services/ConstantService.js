@@ -17,8 +17,10 @@ app.constant('USER_ROLES', {
 	newUser : 'newUser'
 })
 app.constant('ENVIRONMENT', {
-	mode : 'dev',
-	baseUrl : 'http://localhost:8080'
+	mode : 'prod',
+	baseUrl : 'http://localhost:8080/pet-supplies'
+	//mode : 'dev',
+	//baseUrl : 'http://localhost:8080'
 })
 app.constant('ERROR', {
 	EMAIL_EXISTS : 'EmailId already exists! Please Login'

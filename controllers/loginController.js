@@ -4,9 +4,9 @@ app.controller('LoginController', ['$scope',
 		'$location',
 		'$rootScope',
 		'AuthService',
-		'AUTH_EVENTS','USER_ROLES',
+		'AUTH_EVENTS','USER_ROLES','ENVIRONMENT',
 		function($scope, $location, $rootScope, AuthService,
-				AUTH_EVENTS,USER_ROLES) {
+				AUTH_EVENTS,USER_ROLES,ENVIRONMENT) {
 			var credentials = {
 				emailId : '',
 				password : ''

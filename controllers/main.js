@@ -12,7 +12,7 @@ app.controller('MainCtrl', [
 				USER_ROLES, AuthService, $location, Session) {
 			$scope.cartItems = {};
 			$scope.petsList = {};
-			CartService.loadCartItems(Session.currentUser.userId).then(function(loadedItems) {
+			CartService.loadCartItems(Session.currentUser.data.userId).then(function(loadedItems) {
 				var cartItems = loadedItems.data;
 				if(cartItems != undefined && cartItems.length > 0){
 					angular.forEach(cartItems,function(cartItem){
@@ -23,11 +23,10 @@ app.controller('MainCtrl', [
 			});
 			$scope.isItemsPresent = false;
 			$scope.currentUser = null;
-//			$scope.petsList = ProductsService.loadAllPets('ALL');
 			ProductsService.loadAllPets('ALL').then(function(data) {
 				$scope.petsList = data;
 			});
-			$scope.userName = Session.currentUser.userName;
+			$scope.userName = Session.currentUser.data.userName;
 			$scope.load = function(type) {
 				$scope.pettype = type;
 				$scope.products = type;
@@ -77,7 +76,7 @@ app.controller('MainCtrl', [
 					delete $scope.cartItems[item.id];
 					deleteCartItem(item);
 				}
-				if ($scope.cartItems.length == 0) {
+				if ($scope.cartItems.length === 0) {
 					$scope.isItemsPresent = false;
 				}
 			};
@@ -99,7 +98,7 @@ app.controller('MainCtrl', [
 					productName : item.productName,
 					price : item.price,
 					currency : item.currency,
-					userId : Session.currentUser.userId
+					userId : Session.currentUser.data.userId
 				};
 				return cartItem;
 			};
@@ -109,7 +108,7 @@ app.controller('MainCtrl', [
 			};
 			
 			var compareQuantity = function(savedCartItem,cartItemToBeSaved){
-				return compareUserIdAndProductId(savedCartItem,cartItemToBeSaved) && savedCartItem.quantity !== cartItemToBeSaved.quantity;
+				return compareUserIdAndProductId(savedCartItem,cartItemToBeSaved) && savedCartItem.quantity != cartItemToBeSaved.quantity;
 			};
 			
 			var compareUserIdAndProductId = function(savedCartItem,cartItemToBeSaved){

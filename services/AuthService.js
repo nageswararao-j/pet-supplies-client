@@ -5,8 +5,8 @@ app.factory('AuthService',['$http','$rootScope','Session','USER_ROLES','AUTH_EVE
 
 	authService.login = function(credentials) {
 		return $http.post($rootScope.baseUrl+'/login', credentials).success(function(res) {
-			Session.create(res.data.emailId, res.data.userId, USER_ROLES.newUser);
-			return res.data;
+			Session.create(res.emailId, res.userId, USER_ROLES.newUser);
+			return res;
 		}).error(function(error) {
 			if(error.present){
 				console.log(ERROR.EMAIL_EXISTS);
@@ -17,7 +17,7 @@ app.factory('AuthService',['$http','$rootScope','Session','USER_ROLES','AUTH_EVE
 			}
 		});
 	};
-
+	
 	authService.isAuthenticated = function() {
 		return !!Session.userId;
 	};
@@ -27,10 +27,7 @@ app.factory('AuthService',['$http','$rootScope','Session','USER_ROLES','AUTH_EVE
 	};
 	
 	authService.isAuthorized = function(authorizedRoles) {
-//		if (!angular.isArray(authorizedRoles)) {
-//			authorizedRoles = [ authorizedRoles ];
-//		}
-		return (authService.isAuthenticated())// && authorizedRoles.indexOf(Session.userRole) !== -1);
+		return (authService.isAuthenticated());
 	};
 
 	return authService;

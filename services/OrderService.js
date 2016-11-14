@@ -7,9 +7,9 @@ app.factory('OrderService', [
 			var placeOrder = function(orders) {
 				return $http.post($rootScope.baseUrl+'/order/save', orders)
 						.success(function(res) {
-							console.log("Saved Cart Item successfully!");
+							console.log("Saved Order successfully!");
 						}).error(function(error) {
-							console.log("Error while saving Cart Item");
+							console.log("Error while saving Order");
 						});
 			};
 			
