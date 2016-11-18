@@ -1,6 +1,6 @@
 # pet-supplies-client
 
-pet-supplies-client is a pet supplies admin/seller angular UI project with version 1.0.
+pet-supplies-client is a pet supplies angular UI project and consumes pet-supplies restful services with version 1.0.
 
 Advice to developers install node & gulp js.
 1)package as jar, run mvn install to get required dependency as jar.
